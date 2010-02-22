@@ -8,7 +8,8 @@ See LICENSE.txt for licensing conditions (BSD-style).
 
 To use with xsbt 0.6, add the following dependency to your project:
 
-  val junitInterface = "com.novocode" % "junit-interface" % "0.3"
+  val bryanjswift = "Bryan J Swift Repository" at "http://repos.bryanjswift.com/maven2/"
+  val junitInterface = "com.novocode" %% "junit-interface" % "0.3.1"
   override def testFrameworks = super.testFrameworks ++ List(new TestFramework("com.novocode.junit.JUnitFramework"))
 
 Your test classes need to implement the marker interface com.novocode.junit.TestMarker in order
