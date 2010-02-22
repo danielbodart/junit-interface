@@ -1,0 +1,7 @@
+== 0.3.1 ==
+
+* Add TestPassedEvent which is logged when a test finishes and was not listed as a failure
+
+== 0.3.0 ==
+
+Forked from git://github.com/szeiger/junit-interface.git
