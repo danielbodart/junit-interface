@@ -2,7 +2,9 @@ bin/
 .manager/
 *.class
 lib_managed
+project/plugins
 project/boot
 project/build/target
 target
 .scala_dependencies
+.resolver

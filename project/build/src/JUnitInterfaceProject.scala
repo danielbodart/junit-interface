@@ -3,23 +3,15 @@ import scala.collection.Set
 import scala.xml._
 import java.io.{File, FileOutputStream}
 import java.nio.channels.Channels
+import bjs.project.ResolverPlugin
 
-class JUnitInterfaceProject(info: ProjectInfo) extends DefaultProject(info)
+class JUnitInterfaceProject(info: ProjectInfo) extends DefaultProject(info) with ResolverPlugin
 {
   val junit = "junit" % "junit" % "4.7"
   val testInterface = "org.scala-tools.testing" % "test-interface" % "0.2"
   override def javaCompileOptions = JavaCompileOption("-target") :: JavaCompileOption("1.5") :: Nil
 
   /*********** Publishing ***********/
-  val publishTo = Resolver.file("ScalaQuery Test Repo", new File("e:/temp/repo/"))
-  //val publishTo = "Scala Tools Snapshots" at "http://nexus.scala-tools.org/content/repositories/snapshots/"
-  //val publishTo = "Scala Tools Releases" at "http://nexus.scala-tools.org/content/repositories/releases/"
-  Credentials(Path.userHome / ".ivy2" / ".credentials", log)
-  def specificSnapshotRepo =
-    Resolver.url("scala-nightly").
-    artifacts("http://scala-tools.org/repo-snapshots/[organization]/[module]/2.8.0-SNAPSHOT/[artifact]-[revision].[ext]").
-    mavenStyle()
-  val nightlyScala = ModuleConfiguration("org.scala-lang", "*", "2.8.0-.*", specificSnapshotRepo)
   override def deliverScalaDependencies = Nil
   override def managedStyle = ManagedStyle.Maven
 
@@ -52,6 +44,12 @@ class JUnitInterfaceProject(info: ProjectInfo) extends DefaultProject(info)
           <name>Stefan Zeiger</name>
           <timezone>+1</timezone>
           <email>szeiger [at] novocode.com</email>
+        </developer>
+        <developer>
+          <id>bryanjswift</id>
+          <name>Bryan J Swift</name>
+          <timezone>-5</timezone>
+          <email>bryan [at] bryanjswift.com</email>
         </developer>
       </developers>
       <scm>
