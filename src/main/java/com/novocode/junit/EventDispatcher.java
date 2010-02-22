@@ -13,6 +13,7 @@ final class EventDispatcher extends RunListener
 {
   private final RichLogger logger;
   private final HashSet<String> reported = new HashSet<String>();
+  private final HashSet<String> failed = new HashSet<String>();
   private final EventHandler handler;
 
   EventDispatcher(RichLogger logger, EventHandler handler)
@@ -25,10 +26,19 @@ final class EventDispatcher extends RunListener
   public void testAssumptionFailure(Failure failure) { postIfFirst(new TestAssumptionFailedEvent(failure)); }
 
   @Override
-  public void testFailure(Failure failure) { postIfFirst(new TestFailedEvent(failure)); }
+  public void testFailure(Failure failure)
+  {
+    failed.add(failure.getDescription().getDisplayName());
+    postIfFirst(new TestFailedEvent(failure));
+  }
 
   @Override
-  public void testFinished(Description desc) { postIfFirst(new TestFinishedEvent(desc)); }
+  public void testFinished(Description desc) {
+    if (!failed.contains(desc.getDisplayName())) {
+      postIfFirst(new TestPassedEvent(desc));
+    }
+    postIfFirst(new TestFinishedEvent(desc));
+  }
 
   @Override
   public void testIgnored(Description desc) { postIfFirst(new TestIgnoredEvent(desc)); }
