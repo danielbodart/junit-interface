@@ -6,10 +6,14 @@ sbt without having to build a binary-compatible test framework first.
 
 See LICENSE.txt for licensing conditions (BSD-style).
 
-To use with xsbt 0.7, add the following dependency to your project:
+To use with xsbt 0.7.x, add the following dependency to your project:
 
     val bryanjswift = "Bryan J Swift Repository" at "http://repos.bryanjswift.com/maven2/"
-    val junitInterface = "com.novocode" %% "junit-interface" % "0.4"
+    val junitInterface = "com.novocode" %% "junit-interface" % "0.4.0"
+
+Or you can get it directly from Github:
+
+    val junitInterface = "com.novocode" %% "junit-interface" % "0.4.0" from "http://github.com/downloads/bryanjswift/junit-interface/junit-interface-0.4.0.jar"
 
 == Publishing ==
 
@@ -22,4 +26,3 @@ publishTo property or add a resolver file (.resolver by default, configurable wi
     resolver.port=22
     resolver.path=/path/to/publish/into/
     resolver.type=sftp|ssh
-=======
