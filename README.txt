@@ -9,7 +9,7 @@ See LICENSE.txt for licensing conditions (BSD-style).
 To use with xsbt 0.7.x, add the following dependency to your project:
 
     val bryanjswift = "Bryan J Swift Repository" at "http://repos.bryanjswift.com/maven2/"
-    val junitInterface = "com.novocode" %% "junit-interface" % "0.4.0"
+    val junitInterface = "com.novocode" % "junit-interface" % "0.4.0" % test
 
 Or you can get it directly from Github:
 
