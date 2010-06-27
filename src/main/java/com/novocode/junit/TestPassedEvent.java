@@ -11,6 +11,6 @@ final class TestPassedEvent extends AbstractEvent
   @Override
   public void logTo(RichLogger logger)
   {
-    logger.info("Test "+testName+" passed");
+    logger.debug("Test "+testName+" passed");
   }
 }

@@ -11,6 +11,6 @@ final class TestIgnoredEvent extends AbstractEvent
   @Override
   public void logTo(RichLogger logger)
   {
-    logger.info("Test "+testName+" ignored");
+    logger.warn("Test "+testName+" ignored");
   }
 }

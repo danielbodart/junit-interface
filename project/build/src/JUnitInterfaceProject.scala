@@ -2,9 +2,9 @@ import sbt._
 import java.io.File
 import bjs.project.ResolverPlugin
 
-class JUnitInterfaceProject(info: ProjectInfo) extends DefaultProject(info) with ResolverPlugin
+class JUnitInterfaceProject(info: ProjectInfo) extends DefaultProject(info)
 {
-  val junit = "junit" % "junit" % "4.7"
+  val junit = "junit" % "junit" % "4.8.1"
   val testInterface = "org.scala-tools.testing" % "test-interface" % "0.5"
   override def javaCompileOptions = JavaCompileOption("-target") :: JavaCompileOption("1.5") :: Nil
 
@@ -12,6 +12,8 @@ class JUnitInterfaceProject(info: ProjectInfo) extends DefaultProject(info) with
   override def deliverScalaDependencies = Nil
   override def disableCrossPaths = true
   override def managedStyle = ManagedStyle.Maven
+
+
 
   /*********** Extra meta-data for the POM ***********/
   override def pomExtra =
